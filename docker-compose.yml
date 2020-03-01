@@ -1,0 +1,15 @@
+version: "3.2"
+services:
+    jekyll:
+        image: jekyll/jekyll:4.0
+        volumes:
+            - ./src:/srv/jekyll
+            - ./vendor:/usr/local/bundle
+        expose: 
+            - 4000
+        env_file: .env-jekyll
+        command: bundle exec jekyll serve
+networks:
+    default:
+        external:
+            name: webproxy
