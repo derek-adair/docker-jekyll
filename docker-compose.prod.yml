@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+    jekyll:
+        build: 
+            context: ./
+            dockerfile: Dockerfile.prod
+            #        volumes:
+            #            - ./src:/srv/jekyll
+            #            - ./vendor:/usr/local/bundle
+        expose: 
+            - 80
+        env_file: .env-jekyll
+networks:
+    default:
+        external:
+            name: webproxy
